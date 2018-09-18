@@ -1,7 +1,7 @@
-
 stadsetning = 1
-
+      
 while stadsetning != 7:
+    sanngildi = True  
     if stadsetning == 1 or stadsetning == 4:
         print("You can travel: (N)orth.")     
     elif stadsetning == 2:
@@ -15,18 +15,20 @@ while stadsetning != 7:
     elif stadsetning == 8:
         print("You can travel: (N)orth or (S)outh.")
 
-    breyting = str(input("Direction: ").lower())
-    
-    if breyting == "n" and (stadsetning == 1 or 4 or 2 or 8):
-        stadsetning += 1
-    elif breyting == "s" and (stadsetning == 2 or 5 or 9 or 3 or 8):
-        stadsetning -= 1
-    elif breyting == "w" and (stadsetning == 5 or 9 or 6):
-        stadsetning -= 3
-    elif breyting == "e" and (stadsetning == 2 or 3 or 6):
-        stadsetning += 3
-    else: 
-        print("Not a valid direction!")
+    while sanngildi:
+        breyting = str(input("Direction: ").lower())     
+        if breyting == "n" and (stadsetning in (1, 4, 2, 8)):
+            stadsetning += 1
+        elif breyting == "s" and (stadsetning in (2, 5, 9, 3, 8)):
+            stadsetning -= 1
+        elif breyting == "w" and (stadsetning in (5, 9, 6)):
+            stadsetning -= 3
+        elif breyting == "e" and (stadsetning in (2, 3, 6)):
+            stadsetning += 3
+        else: 
+            print("Not a valid direction!")
+            continue
+        sanngildi = False
     
 else:
     print("Victory!")
